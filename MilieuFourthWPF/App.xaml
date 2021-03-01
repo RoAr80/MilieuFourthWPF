@@ -1,0 +1,17 @@
+﻿<Application x:Class="MilieuFourthWPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MilieuFourthWPF"
+             Startup="OnStartup">
+    
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- The syntax is /NameOfAssembly;Component/NameOfXamlFileInAssembly.xaml -->
+                <ResourceDictionary Source="/MilieuStylesLibrary;Component/Main/Default/Colors/Light/LightResources.xaml"/>
+                <ResourceDictionary Source="/MilieuStylesLibrary;Component/Main/Default/Resources.xaml"/>
+                <ResourceDictionary Source="/MilieuStylesLibrary;Component/Main/Main.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "j/XMd1bw64eJOu/5tD1ncP+7cJg9re2dABJQIy8lNObh8RvG2H0rQS4Pd8OK9yo3ElpPtFqBXLpIERvXcKE4RA==",
+  "success": true,
+  "projectFilePath": "D:\\DEV\\Milieu Gamma\\MilieuAllinFirst\\MilieuFourthWPF\\MilieuStylesLibrary\\MilieuStylesLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\arabo\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.31\\microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512"
+  ],
+  "logs": []
+}

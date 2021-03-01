@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MilieuStylesLibrary.Main">
+
+    <!--Нужен ещё один уровень абстракции-->
+    
+    <Color x:Key="DarkPurple">#8A4269</Color>
+    <SolidColorBrush x:Key="ForgetPassBrush" Color="{StaticResource DarkPurple}"/>
+
+
+    <Color x:Key="PeachLight">#f1b9b8</Color>
+    <SolidColorBrush x:Key="PeachLightBrush" Color="{StaticResource PeachLight}"/>
+    <SolidColorBrush x:Key="NavigationButtonColor" Color="{StaticResource PeachLight}"/>
+    <SolidColorBrush x:Key="LoginBorderBrush" Color="{StaticResource PeachLight}"/>
+
+    <Color x:Key="Bloody">#f15246</Color>
+    <SolidColorBrush x:Key="NavigationExitMouseOverColor" Color="{StaticResource Bloody}"/>
+    <SolidColorBrush x:Key="LoginTextPassBoxMouseOverBorderColor" Color="{StaticResource Bloody}"/>
+
+    <Color x:Key="LightGrey">#fbfbfb</Color>
+    <SolidColorBrush x:Key="LightGreyBrush" Color="{StaticResource LightGrey}"/>
+
+
+    <Color x:Key="SimpleGrey">#b2b2b2</Color>
+    <SolidColorBrush x:Key="SimpleGreyBrush" Color="{StaticResource SimpleGrey}"/>
+    <SolidColorBrush x:Key="LoginTextPassBoxFocusedForegroundColor" Color="{StaticResource SimpleGrey}"/>
+
+    <Color x:Key="DarkGrey">#544b4b</Color>
+    <SolidColorBrush x:Key="NavigationForegroundColor" Color="{StaticResource DarkGrey}"/>
+
+    <Color x:Key="Bordo">#ab5452</Color>
+    <SolidColorBrush x:Key="ExitButtonColor" Color="{StaticResource Bordo}"/>
+    <SolidColorBrush x:Key="LoginAndRegFocusStyleBrush" Color="{StaticResource Bordo}"/>
+    <SolidColorBrush x:Key="MoveToRegisterFormBrush" Color="{StaticResource Bordo}"/>
+
+    <Color x:Key="SimpleBlack">#000000</Color>
+    <SolidColorBrush x:Key="LogoTextColor" Color="{StaticResource SimpleBlack}"/>
+
+</ResourceDictionary>

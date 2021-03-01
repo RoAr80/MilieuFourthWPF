@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\human.png" />
+    <None Remove="Resources\robot.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Design" Version="1.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.705.50" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Milieu.Models\Milieu.Models.csproj" />
+    <ProjectReference Include="..\MilieuStylesLibrary\MilieuStylesLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\human.png" />
+    <Resource Include="Resources\robot.png" />
+    <Resource Include="Resources\Under-Construction-Sign.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\netcoreapp3.1\asset-manifest.json" />
+    <None Include="bin\Debug\netcoreapp3.1\favicon.ico" />
+    <None Include="bin\Debug\netcoreapp3.1\index.html" />
+    <None Include="bin\Debug\netcoreapp3.1\logo192.png" />
+    <None Include="bin\Debug\netcoreapp3.1\logo512.png" />
+    <None Include="bin\Debug\netcoreapp3.1\manifest.json" />
+    <None Include="bin\Debug\netcoreapp3.1\robots.txt" />
+    <None Include="bin\Debug\netcoreapp3.1\static\css\main.8c8b27cf.chunk.css" />
+    <None Include="bin\Debug\netcoreapp3.1\static\css\main.8c8b27cf.chunk.css.map" />
+    <None Include="bin\Debug\netcoreapp3.1\static\js\2.f26d5117.chunk.js" />
+    <None Include="bin\Debug\netcoreapp3.1\static\js\2.f26d5117.chunk.js.LICENSE.txt" />
+    <None Include="bin\Debug\netcoreapp3.1\static\js\2.f26d5117.chunk.js.map" />
+    <None Include="bin\Debug\netcoreapp3.1\static\js\3.1ce34a2e.chunk.js" />
+    <None Include="bin\Debug\netcoreapp3.1\static\js\3.1ce34a2e.chunk.js.map" />
+    <None Include="bin\Debug\netcoreapp3.1\static\js\main.9c885679.chunk.js" />
+    <None Include="bin\Debug\netcoreapp3.1\static\js\main.9c885679.chunk.js.map" />
+    <None Include="bin\Debug\netcoreapp3.1\static\js\runtime-main.bae29bda.js" />
+    <None Include="bin\Debug\netcoreapp3.1\static\js\runtime-main.bae29bda.js.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

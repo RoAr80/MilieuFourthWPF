@@ -1,0 +1,9 @@
+D:\DEV\Milieu Gamma\MilieuAllinFirst\MilieuFourthWPF\Milieu.Models\bin\Debug\netcoreapp3.1\Milieu.Models.deps.json
+D:\DEV\Milieu Gamma\MilieuAllinFirst\MilieuFourthWPF\Milieu.Models\bin\Debug\netcoreapp3.1\Milieu.Models.dll
+D:\DEV\Milieu Gamma\MilieuAllinFirst\MilieuFourthWPF\Milieu.Models\bin\Debug\netcoreapp3.1\Milieu.Models.pdb
+D:\DEV\Milieu Gamma\MilieuAllinFirst\MilieuFourthWPF\Milieu.Models\obj\Debug\netcoreapp3.1\Milieu.Models.csprojAssemblyReference.cache
+D:\DEV\Milieu Gamma\MilieuAllinFirst\MilieuFourthWPF\Milieu.Models\obj\Debug\netcoreapp3.1\Milieu.Models.AssemblyInfoInputs.cache
+D:\DEV\Milieu Gamma\MilieuAllinFirst\MilieuFourthWPF\Milieu.Models\obj\Debug\netcoreapp3.1\Milieu.Models.AssemblyInfo.cs
+D:\DEV\Milieu Gamma\MilieuAllinFirst\MilieuFourthWPF\Milieu.Models\obj\Debug\netcoreapp3.1\Milieu.Models.csproj.CoreCompileInputs.cache
+D:\DEV\Milieu Gamma\MilieuAllinFirst\MilieuFourthWPF\Milieu.Models\obj\Debug\netcoreapp3.1\Milieu.Models.dll
+D:\DEV\Milieu Gamma\MilieuAllinFirst\MilieuFourthWPF\Milieu.Models\obj\Debug\netcoreapp3.1\Milieu.Models.pdb
