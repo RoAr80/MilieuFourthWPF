@@ -21,7 +21,7 @@ namespace MilieuFourthWPF
             _clientRepo = DI.ServiceProvider.GetService<IClientRepo>();
         }
 
-        public string Usering { get; set; }
+        public string Useringg { get; set; }
 
 
         #region Methods
