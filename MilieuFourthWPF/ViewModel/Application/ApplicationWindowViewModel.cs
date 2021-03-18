@@ -15,23 +15,13 @@ namespace MilieuFourthWPF
         public long UserSessionLocalId { get; set; }
         public LoginCredentialsDataModel CurrentUserLoginCredentials { get; set; }
         private IClientRepo _clientRepo { get; set; }        
-        public ApplicationWindowPageEnum CurrentPage { get; set; } = ApplicationWindowPageEnum.LoginAndRegPage;
+        public ApplicationWindowPageEnum CurrentPage { get; set; } = ApplicationWindowPageEnum.Application;
         public ApplicationWindowViewModel()
         {
             _clientRepo = DI.ServiceProvider.GetService<IClientRepo>();
-        }
-
-        public string Useringg { get; set; }
-
+        }       
 
         #region Methods
-
-        public void ChangeApplicationWindowPageTo(ApplicationWindowPageEnum page)
-        {
-            ApplicationWindowPageEnum prevPage = CurrentPage;
-            CurrentPage = page;
-            PageChanged?.Invoke(this, new ApplicationWindowEventArgs(prevPage));
-        }
 
         public async Task EntryToAppAsync(string Email, string Jwt, string RefreshToken)
         {
@@ -47,7 +37,7 @@ namespace MilieuFourthWPF
             ApplicationWindowPageEnum prevPage = CurrentPage;
             CurrentPage = ApplicationWindowPageEnum.Application;
             await _clientRepo.UpdateOrAddUserAsync(loginCredentials);
-            PageChanged?.Invoke(this, new ApplicationWindowEventArgs(prevPage));            
+            //PageChanged?.Invoke(this, new ApplicationWindowEventArgs(prevPage));            
         }
 
         public async Task TryToAutoLoginAsync()
@@ -78,10 +68,6 @@ namespace MilieuFourthWPF
                     CurrentPage = ApplicationWindowPageEnum.LoginAndRegPage;
             }
         }
-        #endregion
-
-        #region Events
-        public event EventHandler<ApplicationWindowEventArgs> PageChanged; 
-        #endregion
+        #endregion       
     }
 }

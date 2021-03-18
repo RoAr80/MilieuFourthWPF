@@ -14,8 +14,9 @@
             <ColumnDefinition Width="{Binding ElementName=thisUserControl, Path=SideMenuWidth, FallbackValue=205}"
                               MaxWidth="{Binding ElementName=thisUserControl, Path=SideMenuWidth}"/>
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-            
+
         <!-- Side Menu ToDo: задать один Padding вместо множества margin
         -->
         <Grid x:Name="SideMenu" 
@@ -72,6 +73,7 @@
             <ContentControl Content="{Binding CurrentAppPage, Converter={local:AppPagesConverter}}"/>
             <Button Height="100" Width="100" Command="{Binding doSmth}"/>
         </Grid>
-        
+        <local:SideNavigationMenu Grid.Column="2"/>
+
     </Grid>
 </UserControl>

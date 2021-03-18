@@ -48,7 +48,7 @@ namespace MilieuFourthWPF
 
             services.AddScoped<HttpServer>();
             services.AddScoped<IClientRepo, ClientRepository>();
-            
+
             //services.AddScoped<NavigationAndAppViewModel>();
         }
 

@@ -186,3 +186,5 @@ D:\DEV\Milieu Gamma\MilieuAllinFirst\MilieuFourthWPF\MilieuFourthWPF\bin\Debug\n
 D:\DEV\Milieu Gamma\MilieuAllinFirst\MilieuFourthWPF\MilieuFourthWPF\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 D:\DEV\Milieu Gamma\MilieuAllinFirst\MilieuFourthWPF\MilieuFourthWPF\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 D:\DEV\Milieu Gamma\MilieuAllinFirst\MilieuFourthWPF\MilieuFourthWPF\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\DEV\Milieu Gamma\MilieuAllinFirst\MilieuFourthWPF\MilieuFourthWPF\obj\Debug\netcoreapp3.1\UserControls\SideNavigationMenu\SideNavigationMenu.g.cs
+D:\DEV\Milieu Gamma\MilieuAllinFirst\MilieuFourthWPF\MilieuFourthWPF\obj\Debug\netcoreapp3.1\UserControls\SideNavigationMenu\SideNavigationMenu.baml

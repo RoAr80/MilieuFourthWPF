@@ -27,7 +27,7 @@ namespace MilieuFourthWPF
             mainWindow.Show();
 
             var appVM = DI.ServiceProvider.GetService<ApplicationWindowViewModel>();
-            await appVM.TryToAutoLoginAsync();
+            //await appVM.TryToAutoLoginAsync();
 
         }        
     }
