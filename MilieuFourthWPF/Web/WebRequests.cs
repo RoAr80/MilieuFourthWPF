@@ -13,15 +13,16 @@ namespace MilieuFourthWPF
 {
     public static class WebRequests
     {
-        
+        private static HttpClient _client;
+               
         public static async Task<HttpResponseMessage> PostJsonAsync(
             string url, 
             object content = null,             
             string bearerToken = null)
         {
-            
 
-            HttpClient client = DI.ServiceProvider.GetService<HttpClient>();            
+            // ToDo: заглушка, переделать
+            HttpClient client = new HttpClient();   
 
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
@@ -43,8 +44,8 @@ namespace MilieuFourthWPF
             string url,            
             string bearerToken = null)
         {
-
-            HttpClient client = DI.ServiceProvider.GetService<HttpClient>();
+            // ToDo: заглушка, переделать
+            HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");

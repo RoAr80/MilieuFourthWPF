@@ -15,7 +15,7 @@ namespace MilieuFourthWPF
                 case AppPageEnum.Home:
                     return new HomePage();
                 case AppPageEnum.Cards:
-                    return DI.ServiceProvider.GetService<CardsPage>();
+                    return new CardsPage();
                 case AppPageEnum.Stats:
                     return new StatsPage();
                 case AppPageEnum.Settings:

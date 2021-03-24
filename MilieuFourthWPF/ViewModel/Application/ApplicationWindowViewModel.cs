@@ -1,10 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Milieu.Models.Account.ClientSide;
-using Milieu.Models.Requests;
-using Milieu.Models.Responses;
-using MilieuFourthWPF.Database.Repos;
-using MilieuFourthWPF.Helpers;
-using Newtonsoft.Json;
+﻿using Milieu.ClientModels.ClientSide;
 using System;
 using System.Threading.Tasks;
 
@@ -14,11 +8,12 @@ namespace MilieuFourthWPF
     {
         public long UserSessionLocalId { get; set; }
         public LoginCredentialsDataModel CurrentUserLoginCredentials { get; set; }
-        private IClientRepo _clientRepo { get; set; }        
-        public ApplicationWindowPageEnum CurrentPage { get; set; } = ApplicationWindowPageEnum.Application;
+
+        //public ApplicationWindowPageEnum CurrentPage { get; set; } = ApplicationWindowPageEnum.Application;
+        public BaseViewModel CurrentPage { get; set; } = new LoginAndRegViewModel();
         public ApplicationWindowViewModel()
         {
-            _clientRepo = DI.ServiceProvider.GetService<IClientRepo>();
+            
         }       
 
         #region Methods
@@ -34,39 +29,39 @@ namespace MilieuFourthWPF
                 IsLogout = false
             };
 
-            ApplicationWindowPageEnum prevPage = CurrentPage;
-            CurrentPage = ApplicationWindowPageEnum.Application;
-            await _clientRepo.UpdateOrAddUserAsync(loginCredentials);
+            //ApplicationWindowPageEnum prevPage = CurrentPage;
+            //CurrentPage = ApplicationWindowPageEnum.Application;
+            //await _clientRepo.UpdateOrAddUserAsync(loginCredentials);
             //PageChanged?.Invoke(this, new ApplicationWindowEventArgs(prevPage));            
         }
 
         public async Task TryToAutoLoginAsync()
         {            
-            var user = await _clientRepo.GetLastEntryUserAsync();
+            //var user = await _clientRepo.GetLastEntryUserAsync();
 
-            if (user == null || user.IsLogout) 
-                return;            
+            //if (user == null || user.IsLogout) 
+            //    return;            
 
-            var jwt = user.Jwt; 
-            var urlAmIAuth = ApiRouteHelper.GetAccountControllerAmIAuthorized();
-            var response = await WebRequests.GetAsyncJson(urlAmIAuth, jwt);                        
-            if (response.IsSuccessStatusCode)
-                await EntryToAppAsync(user.Email, user.Jwt, user.RefreshToken);
-            else
-            {
-                //ToDo: создать Logout метод
-                //Попробовать через refreshtoken запрыгнуть                
-                var urlForJwtAndRt = ApiRouteHelper.GetAccountControllerGetJwtAndRtViaRt();
-                var responseRefresh = await WebRequests.PostJsonAsync(urlForJwtAndRt, new AuthenticateApiRequest { Email = user.Email, RefreshToken = user.RefreshToken });
-                if(responseRefresh.IsSuccessStatusCode)
-                {
-                    AuthenticateApiResponse resultRefresh = JsonConvert.DeserializeObject<AuthenticateApiResponse>(responseRefresh.Content.ReadAsStringAsync().Result);                    
-                    await _clientRepo.UpdateTokensAsync(user, resultRefresh.Jwt, resultRefresh.RefreshToken);
-                    await EntryToAppAsync(user.Email, user.Jwt, user.RefreshToken);
-                }
-                else
-                    CurrentPage = ApplicationWindowPageEnum.LoginAndRegPage;
-            }
+            //var jwt = user.Jwt; 
+            //var urlAmIAuth = ApiRouteHelper.GetAccountControllerAmIAuthorized();
+            //var response = await WebRequests.GetAsyncJson(urlAmIAuth, jwt);                        
+            //if (response.IsSuccessStatusCode)
+            //    await EntryToAppAsync(user.Email, user.Jwt, user.RefreshToken);
+            //else
+            //{
+            //    //ToDo: создать Logout метод
+            //    //Попробовать через refreshtoken запрыгнуть                
+            //    var urlForJwtAndRt = ApiRouteHelper.GetAccountControllerGetJwtAndRtViaRt();
+            //    var responseRefresh = await WebRequests.PostJsonAsync(urlForJwtAndRt, new AuthenticateApiRequest { Email = user.Email, RefreshToken = user.RefreshToken });
+            //    if(responseRefresh.IsSuccessStatusCode)
+            //    {
+            //        AuthenticateApiResponse resultRefresh = JsonConvert.DeserializeObject<AuthenticateApiResponse>(responseRefresh.Content.ReadAsStringAsync().Result);                    
+            //        //await _clientRepo.UpdateTokensAsync(user, resultRefresh.Jwt, resultRefresh.RefreshToken);
+            //        await EntryToAppAsync(user.Email, user.Jwt, user.RefreshToken);
+            //    }
+            //    else
+            //        CurrentPage = ApplicationWindowPageEnum.LoginAndRegPage;
+            //}
         }
         #endregion       
     }

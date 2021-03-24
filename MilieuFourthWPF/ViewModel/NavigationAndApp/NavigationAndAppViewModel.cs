@@ -1,7 +1,6 @@
-﻿using System.Collections.ObjectModel;
-using System.Windows;
-using Microsoft.Extensions.DependencyInjection;
-using MilieuFourthWPF.Database.Repos;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Milieu.ClientModels.Database.Repos;
+using System.Collections.ObjectModel;
 
 namespace MilieuFourthWPF
 {
@@ -48,28 +47,19 @@ namespace MilieuFourthWPF
 
         #region Constructor
 
-        public NavigationAndAppViewModel()
+        IClientRepo _clientRepo;
+
+        public NavigationAndAppViewModel(IClientRepo clientRepo, ApplicationWindowViewModel appVM)
         {
             SelectedNavigationItem = NavigationList[0];
 
-            IClientRepo clientRepo = DI.ServiceProvider.GetService<IClientRepo>();
-            ApplicationWindowViewModel appVM = DI.ServiceProvider.GetService<ApplicationWindowViewModel>();
+            _clientRepo = clientRepo;            
 
-            UserName = appVM.UserSessionLocalId != default(long) ? clientRepo.GetEmail(appVM.UserSessionLocalId) : "UnknownLongStoryShort";
+            UserName = appVM.UserSessionLocalId != default(long) ? _clientRepo.GetEmail(appVM.UserSessionLocalId) : "UnknownLongStoryShort";
         }
         #endregion
 
         #region Commands
-
-        private RelayCommand _doSmth = null;
-        public RelayCommand doSmth => _doSmth ??
-            (_doSmth = new RelayCommand(DoSmth));
-
-        private void DoSmth()
-        {
-            var mwvm = DI.ServiceProvider.GetService<ApplicationWindowViewModel>();
-            mwvm.CurrentPage = ApplicationWindowPageEnum.LoginAndRegPage;
-        }
 
         #endregion        
 

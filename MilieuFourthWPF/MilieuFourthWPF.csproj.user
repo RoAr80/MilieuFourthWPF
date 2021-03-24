@@ -9,34 +9,34 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="UserControls\AppPages\CardsPage.xaml.cs">
+    <Compile Update="Views\AppPages\CardsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\AppPages\HomePage.xaml.cs">
+    <Compile Update="Views\AppPages\HomePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\AppPages\SettingsPage.xaml.cs">
+    <Compile Update="Views\AppPages\SettingsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\AppPages\StatsPage.xaml.cs">
+    <Compile Update="Views\AppPages\StatsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\AppPages\StorePage.xaml.cs">
+    <Compile Update="Views\AppPages\StorePage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\LoginAndRegPage.xaml.cs">
+    <Compile Update="Views\LoginAndRegPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\NavigationAndAppPage.xaml.cs">
+    <Compile Update="Views\NavigationAndAppPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\Navigation\NavigationButton.xaml.cs">
+    <Compile Update="Views\Navigation\NavigationButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\Navigation\NavigationPanel.xaml.cs">
+    <Compile Update="Views\Navigation\NavigationPanel.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="UserControls\SideNavigationMenu\SideNavigationMenu.xaml.cs">
+    <Compile Update="Views\SideNavigationMenu\SideNavigationMenu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -44,34 +44,34 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\AppPages\CardsPage.xaml">
+    <Page Update="Views\AppPages\CardsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\AppPages\HomePage.xaml">
+    <Page Update="Views\AppPages\HomePage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\AppPages\SettingsPage.xaml">
+    <Page Update="Views\AppPages\SettingsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\AppPages\StatsPage.xaml">
+    <Page Update="Views\AppPages\StatsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\AppPages\StorePage.xaml">
+    <Page Update="Views\AppPages\StorePage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\LoginAndRegPage.xaml">
+    <Page Update="Views\LoginAndRegPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\NavigationAndAppPage.xaml">
+    <Page Update="Views\NavigationAndAppPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\Navigation\NavigationButton.xaml">
+    <Page Update="Views\Navigation\NavigationButton.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\Navigation\NavigationPanel.xaml">
+    <Page Update="Views\Navigation\NavigationPanel.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UserControls\SideNavigationMenu\SideNavigationMenu.xaml">
+    <Page Update="Views\SideNavigationMenu\SideNavigationMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

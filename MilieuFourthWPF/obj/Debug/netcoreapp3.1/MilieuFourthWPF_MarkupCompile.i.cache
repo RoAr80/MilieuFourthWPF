@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
 D:\DEV\Milieu Gamma\MilieuAllinFirst\MilieuFourthWPF\MilieuFourthWPF\App.xaml
-111827663580
-3-1594948372
-54-1064781332
-2412142619663
-MainWindow.xaml;UserControls\AppPages\CardsPage.xaml;UserControls\AppPages\HomePage.xaml;UserControls\AppPages\SettingsPage.xaml;UserControls\AppPages\StatsPage.xaml;UserControls\AppPages\StorePage.xaml;UserControls\LoginAndRegPage.xaml;UserControls\NavigationAndAppPage.xaml;UserControls\Navigation\NavigationButton.xaml;UserControls\Navigation\NavigationPanel.xaml;UserControls\SideNavigationMenu\SideNavigationMenu.xaml;
+112027159172
+1-1983890704
+52-218847043
+256-628461806
+MainWindow.xaml;Views\AppPages\CardsPage.xaml;Views\AppPages\HomePage.xaml;Views\AppPages\SettingsPage.xaml;Views\AppPages\StatsPage.xaml;Views\AppPages\StorePage.xaml;Views\LoginAndRegPage.xaml;Views\NavigationAndAppPage.xaml;Views\Navigation\NavigationButton.xaml;Views\Navigation\NavigationPanel.xaml;Views\SideNavigationMenu\SideNavigationMenu.xaml;
 
 False
 

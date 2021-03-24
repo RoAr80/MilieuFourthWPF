@@ -9,7 +9,8 @@ namespace MilieuFourthWPF.Helpers
 {
     public static class ApiRouteHelper
     {
-        public readonly static string BaseUrl = DI.Configuration["RemoteServer:DomainName"];
+        // ToDo: исправить на configuration
+        public readonly static string BaseUrl = "http://127.0.0.1:5000/";
 
         public static string GetAccountControllerRegisterRoute()
         {

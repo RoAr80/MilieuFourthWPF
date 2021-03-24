@@ -54,7 +54,8 @@ namespace MilieuFourthWPF {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MilieuFourthWPF;component/usercontrols/navigation/navigationbutton.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MilieuFourthWPF;V1.0.0.0;component/usercontrols/navigation/navigationbutton.xaml" +
+                    "", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\UserControls\Navigation\NavigationButton.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
