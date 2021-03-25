@@ -1,9 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Milieu.Models.Account.ClientSide;
 using Milieu.Models.Account.Requests;
 using Milieu.Models.Responses;
-using Milieu.Models.Routes;
-using MilieuFourthWPF.Database.Repos;
 using MilieuFourthWPF.Helpers;
 using Newtonsoft.Json;
 using System.Security;
@@ -59,8 +56,9 @@ namespace MilieuFourthWPF
             if (response.IsSuccessStatusCode)
             {
                 AuthenticateApiResponse result = JsonConvert.DeserializeObject<AuthenticateApiResponse>(response.Content.ReadAsStringAsync().Result);                
-                var appVM = DI.ServiceProvider.GetService<ApplicationWindowViewModel>();
-                await appVM.EntryToAppAsync(result.Email, result.Jwt, result.RefreshToken);                                
+                // ToDo: сделать с NavigationService
+                //var appVM = DI.ServiceProvider.GetService<ApplicationWindowViewModel>();
+                //await appVM.EntryToAppAsync(result.Email, result.Jwt, result.RefreshToken);                                
             }
             else
             {
@@ -89,8 +87,9 @@ namespace MilieuFourthWPF
 
             if (result.ApiResponseDefault.Successful)
             {                                           
-                ApplicationWindowViewModel appVM = DI.ServiceProvider.GetService<ApplicationWindowViewModel>();
-                await appVM.EntryToAppAsync(result.Email, result.Jwt, result.RefreshToken);
+                // ToDo: Переписать на NavigationService
+                //ApplicationWindowViewModel appVM = DI.ServiceProvider.GetService<ApplicationWindowViewModel>();
+                //await appVM.EntryToAppAsync(result.Email, result.Jwt, result.RefreshToken);
             }
 
         }

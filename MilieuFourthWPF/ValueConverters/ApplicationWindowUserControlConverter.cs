@@ -14,12 +14,10 @@ namespace MilieuFourthWPF
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {            
             // Find the appropriate page
-            switch ((ApplicationWindowPageEnum)value)
-            {
-                case ApplicationWindowPageEnum.Application:
-                    return new NavigationAndAppPage();
-                case ApplicationWindowPageEnum.LoginAndRegPage:
-                    return new LoginAndRegPage();
+            switch (value)
+            {                
+                case LoginAndRegViewModel c:
+                    return new LoginAndRegPage(c);
                 default:
                     Debugger.Break();
                     return null;

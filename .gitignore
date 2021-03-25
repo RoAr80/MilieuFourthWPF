@@ -8,4 +8,8 @@
 **/[Rr]elease/
 **/x64/
 [Bb]in/
+<<<<<<< HEAD
 [Oo]bj/
+=======
+[Oo]bj/
+>>>>>>> develop

@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="MilieuFourthWPF.SideNavigationMenuControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MilieuFourthWPF"
+             mc:Ignorable="d"              
+             Name="thisUserControl"
+             d:DataContext="{x:Static local:SideNavigationMenuDesignModel.Instance}"
+             d:DesignHeight="550" d:DesignWidth="225"
+             Visibility="{Binding NavMenuVisibility}">
+    <Grid x:Name="SideMenu" 
+              Grid.Column="0" 
+              >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"                        
+                        HorizontalAlignment="Left"                         
+                        Margin="0 30 0 37">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition 
+                        Width="{Binding ElementName=thisUserControl, Path=ControlsOnSmallSizeVisibility, 
+                        Converter={local:SideMenuVisibilityConverterToWidth}}"/>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource UserProfileRoundedButton}"/>
+            <TextBlock Name="LabelForName"
+                           Grid.Column="1"
+                       Margin="5 0 0 0"                           
+                       Visibility="{Binding ElementName=thisUserControl, Path=ControlsOnSmallSizeVisibility}"
+                       TextTrimming="CharacterEllipsis"
+                           ToolTip="{Binding UserName}"
+                           FontSize="15">
+                    <Run Text="{Binding UserName, FallbackValue=Роман}"/>
+            </TextBlock>
+        </Grid>
+        <ListView Name="listViewNavigation"
+                      Grid.Row="1"
+                      Margin="10 0"
+                      Style="{Binding ElementName=thisUserControl, Path=NavigationListViewStyle, FallbackValue={StaticResource NavigationListView}}"
+                      ItemsSource="{Binding NavigationList}"
+                      SelectedItem="{Binding SelectedNavigationItem}">
+        </ListView>
+
+        <Grid Grid.Row="2"  Margin="0 0 0 20">
+            <TextBlock Name="SignatureText"
+                           Style="{StaticResource SignatureText}"                          
+                           Text="© 2021 Indie RoAr"
+                           Visibility="{Binding ElementName=thisUserControl, Path=ControlsOnSmallSizeVisibility}"
+                           Margin="15 7 0 0"/>
+            <Button Name="ExitButton" 
+                    Style="{Binding ElementName=thisUserControl, Path=ExitButtonStyle,
+                                FallbackValue={StaticResource ExitButton}}"/>
+
+        </Grid>
+
+    </Grid>
+</UserControl>
