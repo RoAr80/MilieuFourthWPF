@@ -62,7 +62,7 @@ namespace MilieuFourthWPF {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MilieuFourthWPF;component/usercontrols/apppages/cardspage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MilieuFourthWPF;V1.0.0.0;component/usercontrols/apppages/cardspage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\UserControls\AppPages\CardsPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
