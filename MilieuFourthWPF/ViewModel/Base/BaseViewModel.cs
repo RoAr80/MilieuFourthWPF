@@ -11,7 +11,7 @@ namespace MilieuFourthWPF
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-
+        public INavigationService _navigationService;
 
         #region INotifyPropertyChanged Implementation
         /// <summary>

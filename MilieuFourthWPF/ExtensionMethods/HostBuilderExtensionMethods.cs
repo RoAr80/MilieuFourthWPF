@@ -32,7 +32,7 @@ namespace MilieuFourthWPF
 
                 services.AddSingleton<IViewModelAbstractFactory, ViewModelAbstractFactory>();
                 services.AddSingleton<IViewModelFactory<LoginAndRegViewModel>, LoginAndRegViewModelFactory>();
-                services.AddSingleton<IViewModelFactory<NavigationAndAppViewModel>, NavigationAndAppViewModelFactory>();
+                services.AddSingleton<IViewModelFactory<SideNavigationMenuViewModel>, SideNavigationMenuViewModelFactory>();
                 //Addsingleton
 
                 // ToDo: Должен ли он быть синглтон?

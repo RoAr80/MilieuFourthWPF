@@ -8,32 +8,23 @@ using System.Windows.Controls;
 namespace MilieuFourthWPF
 {
     /// <summary>
-    /// Interaction logic for NavigationAndAppPage.xaml
+    /// Interaction logic for SideNavigationMenu.xaml
     /// </summary>
-    public partial class NavigationAndAppPage : UserControl, INotifyPropertyChanged
+    public partial class SideNavigationMenuControl : UserControl, INotifyPropertyChanged
     {        
 
-        public NavigationAndAppPage()
+        public SideNavigationMenuControl()
         {
             InitializeComponent();
 
-            //DataContext = new NavigationAndAppViewModel();
+            var mainWindow = App.Current.MainWindow;
 
-            //var mainWindow = DI.ServiceProvider.GetService<MainWindow>();
+            mainWindow.SizeChanged += ChangeNavMenuSize;
 
-            //mainWindow.SizeChanged += ChangeNavMenuSize;
+            thisUserControl.Width = 205;
 
-            //RerenderUserControl();
+            RerenderUserControl();
         }
-
-        public NavigationAndAppPage(SideNavigationMenuViewModel datacontext)
-        {
-            InitializeComponent();
-
-            DataContext = datacontext;
-        }
-
-
 
         public HorizontalAlignment ControlsOnSmallSizeAlignment { get; set; } = HorizontalAlignment.Left;
         public Visibility ControlsOnSmallSizeVisibility { get; set; } = Visibility.Visible;
@@ -59,7 +50,8 @@ namespace MilieuFourthWPF
         private void ChangeNavMenuSize(object sender, SizeChangedEventArgs e)
         {
             // Это длинное условие значит: если ширина предыдущая и новая ширина не превзошла
-            // или не стала меньше величины маленького окна, то ничего не делай
+            // или не стала меньше величины маленького окна, то ничего не делай. Это сделано
+            // для того, чтобы не перендривать окно при изменении на один пиксель
             if ((e.PreviousSize.Width <= smallWidth && e.NewSize.Width <= smallWidth) ||
                (e.PreviousSize.Width > smallWidth && e.NewSize.Width > smallWidth))
                 return;
@@ -69,12 +61,12 @@ namespace MilieuFourthWPF
 
         private void RerenderUserControl()
         {
-            // ToDo: посмотреть есть ли другие способы
             var mainWindow = App.Current.MainWindow;
 
             if (mainWindow.ActualWidth <= smallWidth)
             {
                 SideMenuWidth = 80;
+                thisUserControl.Width = SideMenuWidth;
                 ControlsOnSmallSizeVisibility = Visibility.Collapsed;
                 ControlsOnSmallSizeAlignment = HorizontalAlignment.Center;
                 IconMargin = UserProfileMargin = new Thickness(0);
@@ -84,13 +76,13 @@ namespace MilieuFourthWPF
             else
             {
                 SideMenuWidth = 205;
+                thisUserControl.Width = SideMenuWidth;
                 ControlsOnSmallSizeVisibility = Visibility.Visible;
                 ControlsOnSmallSizeAlignment = HorizontalAlignment.Left;
                 IconMargin = new Thickness(10, 0, 0, 0);
                 UserProfileMargin = new Thickness(15, 0, 0, 0);
                 NavigationListViewStyle = (Style)App.Current.TryFindResource("NavigationListView");
                 ExitButtonStyle = (Style)App.Current.TryFindResource("ExitButton");
-
             }
 
         }

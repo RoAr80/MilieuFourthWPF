@@ -1,20 +1,26 @@
 ﻿using Milieu.ClientModels.ClientSide;
 using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace MilieuFourthWPF
 {
+    //public class ApplicationWindowViewModel : BaseViewModel
     public class ApplicationWindowViewModel : BaseViewModel
     {
         public long UserSessionLocalId { get; set; }
         public LoginCredentialsDataModel CurrentUserLoginCredentials { get; set; }
 
         //public ApplicationWindowPageEnum CurrentPage { get; set; } = ApplicationWindowPageEnum.Application;
-        public BaseViewModel CurrentPage { get; set; } = new LoginAndRegViewModel();
-        public ApplicationWindowViewModel()
+        //public BaseViewModel CurrentPage { get; set; } = new LoginAndRegViewModel();
+        public BaseViewModel CurrentPage => _navigationService.CurrentPage;        
+
+        public ApplicationWindowViewModel(INavigationService navigationService)
         {
-            
-        }       
+            _navigationService = navigationService;
+            _navigationService.NavigateTo(ApplicationWindowPageEnum.LoginAndRegPage);
+        }        
 
         #region Methods
 

@@ -9,10 +9,18 @@ namespace MilieuFourthWPF
     public enum ApplicationWindowPageEnum
     {
         /// <summary>
-        /// The Home page
+        /// The Login or Registration page
         /// </summary>
         LoginAndRegPage = 0,
 
-        Application = 1,
+        Home = 1,
+
+        Cards = 2,
+
+        Stats = 3,
+
+        Settings = 4,
+
+        Store = 5
     }
 }

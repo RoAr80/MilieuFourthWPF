@@ -70,10 +70,10 @@
 
         <!-- App Main-->
         <Grid Grid.Column="1">
-            <ContentControl Content="{Binding CurrentAppPage, Converter={local:AppPagesConverter}}"/>
+            <!--<ContentControl Content="{Binding CurrentAppPage, Converter={local:AppPagesConverter}}"/>-->
             <Button Height="100" Width="100" Command="{Binding doSmth}"/>
         </Grid>
-        <local:SideNavigationMenuControl Grid.Column="2"/>
+        <!--<local:SideNavigationMenuControl Grid.Column="2"/>-->
 
     </Grid>
 </UserControl>

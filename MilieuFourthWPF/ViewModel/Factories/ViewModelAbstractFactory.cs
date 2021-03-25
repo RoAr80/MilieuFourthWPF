@@ -4,12 +4,12 @@ namespace MilieuFourthWPF
 {
     public class ViewModelAbstractFactory : IViewModelAbstractFactory
     {
-        private readonly IViewModelFactory<NavigationAndAppViewModel> _navigationAndAppViewModelFactory;
         private readonly IViewModelFactory<LoginAndRegViewModel> _loginAndRegViewModelFactory;
-        public ViewModelAbstractFactory(IViewModelFactory<NavigationAndAppViewModel> navigationAndAppViewModelFactory,
+        private readonly IViewModelFactory<SideNavigationMenuViewModel> _sideNavigationMenuViewModelFactory;
+        public ViewModelAbstractFactory(IViewModelFactory<SideNavigationMenuViewModel> sideNavigationMenuViewModelFactory,
             IViewModelFactory<LoginAndRegViewModel> loginAndRegViewModelFactory)
         {
-            _navigationAndAppViewModelFactory = navigationAndAppViewModelFactory;
+            _sideNavigationMenuViewModelFactory = sideNavigationMenuViewModelFactory;
             _loginAndRegViewModelFactory = loginAndRegViewModelFactory;
         }
 
@@ -17,14 +17,14 @@ namespace MilieuFourthWPF
         {
             switch ((ApplicationWindowPageEnum)appPageEnum)
             {
-                case ApplicationWindowPageEnum.Application:
-                    return _navigationAndAppViewModelFactory.CreateViewModel();
                 case ApplicationWindowPageEnum.LoginAndRegPage:
                     return _loginAndRegViewModelFactory.CreateViewModel();
+                //case ApplicationWindowPageEnum.Application:
+                //    return _sideNavigationMenuViewModelFactory.CreateViewModel();                
                 default:
                     Debugger.Break();
                     return null;
             }
-        }
+        }        
     }
 }

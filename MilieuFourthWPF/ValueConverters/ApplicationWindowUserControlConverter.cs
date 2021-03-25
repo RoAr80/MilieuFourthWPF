@@ -15,9 +15,7 @@ namespace MilieuFourthWPF
         {            
             // Find the appropriate page
             switch (value)
-            {
-                case NavigationAndAppViewModel c:
-                    return new NavigationAndAppPage(c);
+            {                
                 case LoginAndRegViewModel c:
                     return new LoginAndRegPage(c);
                 default:

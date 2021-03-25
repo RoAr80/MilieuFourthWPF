@@ -8,13 +8,24 @@ namespace MilieuFourthWPF
 {
     public class NavigationService : INavigationService
     {
-
-        public void NavigateTo(AppPageEnum appPageEnum)
+        public BaseViewModel CurrentPage { get; private set; }
+        public long UserSessionLocalId { get; set; }
+        IViewModelAbstractFactory _viewModelAbstractFactory;
+        public NavigationService(IViewModelAbstractFactory viewModelAbstractFactory)
         {
-            throw new NotImplementedException();
+            _viewModelAbstractFactory = viewModelAbstractFactory;
         }
 
-        public void NavigateTo(AppPageEnum appPageEnum, object payload)
+        public void NavigateTo(ApplicationWindowPageEnum appPageEnum)
+        {
+            var vm = _viewModelAbstractFactory.CreateViewModel(appPageEnum);
+
+            // Property Injection O_o. Как будто должно быть в другом месте
+            vm._navigationService = this;
+            CurrentPage = vm;
+        }
+
+        public void NavigateTo(ApplicationWindowPageEnum appPageEnum, object payload)
         {
             throw new NotImplementedException();
         }

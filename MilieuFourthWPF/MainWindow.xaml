@@ -10,6 +10,14 @@
         Title="Milieu" Height="650" Width="1180"
         MinHeight="480" MinWidth="540">
     <Grid>
-        <ContentControl Content="{Binding CurrentPage, Converter={local:ApplicationWindowUserControlConverter}}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <local:SideNavigationMenuControl x:Name="SideNavigationMenuControl"/>
+        <ContentControl Grid.Column="1" 
+                        x:Name="ContentControl"
+                        Content="{Binding CurrentPage, Converter={local:ApplicationWindowUserControlConverter}}"/>
     </Grid>
 </Window>

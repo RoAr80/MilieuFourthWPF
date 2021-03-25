@@ -8,11 +8,13 @@ namespace MilieuFourthWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow(ApplicationWindowViewModel appVM)
+        public MainWindow(SideNavigationMenuViewModel sideMenuVM, ApplicationWindowViewModel appVM)
         {
             InitializeComponent();
 
-            DataContext = appVM;            
+            SideNavigationMenuControl.DataContext = sideMenuVM;
+
+            ContentControl.DataContext = appVM;            
         }       
     }
 }

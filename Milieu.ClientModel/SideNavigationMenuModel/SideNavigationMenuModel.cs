@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using Milieu.ClientModels.Database.Repos;
+using System.Collections.ObjectModel;
 
 namespace Milieu.ClientModels.ClientSide.SideNavigationMenuModel
 {
@@ -13,7 +14,11 @@ namespace Milieu.ClientModels.ClientSide.SideNavigationMenuModel
 
     public class SideNavigationMenuModel
     {
-        
+        IClientRepo _clientRepo;
+        public SideNavigationMenuModel(IClientRepo clientRepo)
+        {
+            _clientRepo = clientRepo;
+        }
         //public ObservableCollection<NavigationItem> NavigationList { get; set; } = new ObservableCollection<NavigationItem>
         //{
         //    new NavigationItem() { Title = "Главная", AppPage = AppPageEnum.Home, Icon = "&#xf015;" },

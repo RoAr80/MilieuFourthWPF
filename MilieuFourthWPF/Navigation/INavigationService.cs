@@ -8,7 +8,9 @@ namespace MilieuFourthWPF
 {
     public interface INavigationService
     {
-        void NavigateTo(AppPageEnum appPageEnum);
-        void NavigateTo(AppPageEnum appPageEnum, object payload);
+        BaseViewModel CurrentPage { get; }
+        long UserSessionLocalId { get; set; }
+        void NavigateTo(ApplicationWindowPageEnum appPageEnum);
+        void NavigateTo(ApplicationWindowPageEnum appPageEnum, object payload);
     }
 }

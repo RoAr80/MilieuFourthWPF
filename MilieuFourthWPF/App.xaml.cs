@@ -1,8 +1,11 @@
 ﻿using Autofac;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Milieu.ClientModels.ClientSide.SideNavigationMenuModel;
 using Milieu.ClientModels.Database.Repos;
+using Milieu.Relational.Database;
 using Milieu.Relational.Database.Repos;
 using System;
 using System.Collections.Generic;
@@ -30,15 +33,42 @@ namespace MilieuFourthWPF
         public App()
         {            
             var builder = new ContainerBuilder();
-            builder.RegisterType<MainWindow>().SingleInstance();
-            builder.RegisterType<ApplicationWindowViewModel>().SingleInstance();
-            builder.RegisterType<HttpClient>().SingleInstance();
 
+            // Add DbContext
+            builder.Register(c =>
+            {
+                var opt = new DbContextOptionsBuilder<ClientDbContext>();
+                opt.UseSqlite("Data Source=MilieuClientData.db");
+
+                return new ClientDbContext(opt.Options);
+            }).AsSelf();
+
+
+            // Models
+            builder.RegisterType<SideNavigationMenuModel>().InstancePerLifetimeScope();
+            
+
+            // Views
+            builder.RegisterType<MainWindow>().SingleInstance();
+            builder.RegisterType<SideNavigationMenuControl>().SingleInstance();
+
+            // ViewModels
+            builder.RegisterType<ApplicationWindowViewModel>().SingleInstance();
+            builder.RegisterType<SideNavigationMenuViewModel>().SingleInstance();
+
+            // Services
+            builder.RegisterType<HttpClient>().SingleInstance();
+            builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
+
+            // ViewModels Factories
             builder.RegisterType<ViewModelAbstractFactory>().As<IViewModelAbstractFactory>().SingleInstance();
             builder.RegisterType<LoginAndRegViewModelFactory>().As<IViewModelFactory<LoginAndRegViewModel>>().SingleInstance();
-            builder.RegisterType<NavigationAndAppViewModelFactory>().As<IViewModelFactory<NavigationAndAppViewModel>>().SingleInstance();
+            builder.RegisterType<SideNavigationMenuViewModelFactory>().As<IViewModelFactory<SideNavigationMenuViewModel>>().SingleInstance();
 
+            
             builder.RegisterType<HttpServer>().SingleInstance();
+
+            // Repos
             builder.RegisterType<ClientRepository>().As<IClientRepo>().InstancePerLifetimeScope();
 
             container = builder.Build();
@@ -47,8 +77,7 @@ namespace MilieuFourthWPF
         
         //ToDo: Плохо конечно, но что поделаешь
         private async void OnStartup(object sender, StartupEventArgs e)
-        {
-            //MainWindow mainWindow = _host.Services.GetService<MainWindow>();
+        {            
             MainWindow mainWindow = container.Resolve<MainWindow>();
             mainWindow.Show();
 
