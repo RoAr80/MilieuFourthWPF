@@ -18,6 +18,8 @@ namespace MilieuFourthWPF
             {                
                 case LoginAndRegViewModel c:
                     return new LoginAndRegPage(c);
+                case HomeViewModel c:
+                    return new HomePage(c);
                 default:
                     Debugger.Break();
                     return null;

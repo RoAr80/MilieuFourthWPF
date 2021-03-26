@@ -18,6 +18,6 @@
         <local:SideNavigationMenuControl x:Name="SideNavigationMenuControl"/>
         <ContentControl Grid.Column="1" 
                         x:Name="ContentControl"
-                        Content="{Binding CurrentPage, Converter={local:ApplicationWindowUserControlConverter}}"/>
+                        Content="{Binding _navigationService.CurrentPage, Converter={local:ApplicationWindowUserControlConverter}}"/>
     </Grid>
 </Window>

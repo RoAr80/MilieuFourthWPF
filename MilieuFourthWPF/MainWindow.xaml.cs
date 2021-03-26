@@ -14,7 +14,7 @@ namespace MilieuFourthWPF
 
             SideNavigationMenuControl.DataContext = sideMenuVM;
 
-            ContentControl.DataContext = appVM;            
+            DataContext = appVM;            
         }       
     }
 }

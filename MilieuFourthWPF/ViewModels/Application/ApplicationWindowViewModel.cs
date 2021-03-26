@@ -12,13 +12,16 @@ namespace MilieuFourthWPF
         public long UserSessionLocalId { get; set; }
         public LoginCredentialsDataModel CurrentUserLoginCredentials { get; set; }
 
+        //public INavigationService _navigationService { get; set; }
+
         //public ApplicationWindowPageEnum CurrentPage { get; set; } = ApplicationWindowPageEnum.Application;
         //public BaseViewModel CurrentPage { get; set; } = new LoginAndRegViewModel();
-        public BaseViewModel CurrentPage => _navigationService.CurrentPage;        
+        //public BaseViewModel CurrentPage => _navigationService.CurrentPage;
 
         public ApplicationWindowViewModel(INavigationService navigationService)
-        {
+        {            
             _navigationService = navigationService;
+                        
             _navigationService.NavigateTo(ApplicationWindowPageEnum.LoginAndRegPage);
         }        
 
@@ -70,5 +73,27 @@ namespace MilieuFourthWPF
             //}
         }
         #endregion       
+
+        #region INotifyPropertyChanged Implementation
+        /// <summary>
+        /// The event that is fired when any child property changes its value
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged = (sender, e) => { };
+
+        /// <summary>
+        /// Call this to fire a <see cref="PropertyChanged"/> event
+        /// </summary>
+        /// <param name="name"></param>
+        public void OnPropertyChanged(string name)
+        {
+            PropertyChanged(this, new PropertyChangedEventArgs(name));
+        }
+
+        public void CallerPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        #endregion
     }
 }

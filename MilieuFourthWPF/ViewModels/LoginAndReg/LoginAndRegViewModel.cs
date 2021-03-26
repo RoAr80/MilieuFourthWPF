@@ -18,6 +18,11 @@ namespace MilieuFourthWPF
         {            
         }
 
+        public LoginAndRegViewModel(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+        }
+
         #endregion
 
         #region Private Fields        
@@ -42,28 +47,30 @@ namespace MilieuFourthWPF
 
         private async Task _loginMethodAsync()
         {
-            string urlLogin = ApiRouteHelper.GetAccountControllerLoginRoute();
+            //string urlLogin = ApiRouteHelper.GetAccountControllerLoginRoute();
 
-            var response = await WebRequests.PostJsonAsync
-            (
-                urlLogin,
-                new LoginApiRequest
-                {
-                    Email = EmailLogin,
-                    Password = PasswordLogin.Unsecure()
-                });
+            //var response = await WebRequests.PostJsonAsync
+            //(
+            //    urlLogin,
+            //    new LoginApiRequest
+            //    {
+            //        Email = EmailLogin,
+            //        Password = PasswordLogin.Unsecure()
+            //    });
 
-            if (response.IsSuccessStatusCode)
-            {
-                AuthenticateApiResponse result = JsonConvert.DeserializeObject<AuthenticateApiResponse>(response.Content.ReadAsStringAsync().Result);                
-                // ToDo: сделать с NavigationService
-                //var appVM = DI.ServiceProvider.GetService<ApplicationWindowViewModel>();
-                //await appVM.EntryToAppAsync(result.Email, result.Jwt, result.RefreshToken);                                
-            }
-            else
-            {
-                // Добавить в чём ошибка
-            }
+            //if (response.IsSuccessStatusCode)
+            //{
+            //    AuthenticateApiResponse result = JsonConvert.DeserializeObject<AuthenticateApiResponse>(response.Content.ReadAsStringAsync().Result);                
+            //    // ToDo: сделать с NavigationService
+            //    //var appVM = DI.ServiceProvider.GetService<ApplicationWindowViewModel>();
+            //    //await appVM.EntryToAppAsync(result.Email, result.Jwt, result.RefreshToken);                                
+            //}
+            //else
+            //{
+            //    // Добавить в чём ошибка
+            //}
+
+            _navigationService.NavigateTo(ApplicationWindowPageEnum.Home);
         }
 
         private IAsyncCommand _registerCommand = null;

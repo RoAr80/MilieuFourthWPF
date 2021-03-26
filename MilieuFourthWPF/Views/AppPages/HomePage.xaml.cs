@@ -21,6 +21,15 @@ namespace MilieuFourthWPF
         public HomePage()
         {
             InitializeComponent();
+
+            DataContext = new HomeViewModel();
+        }
+
+        public HomePage(HomeViewModel dataContext)
+        {
+            InitializeComponent();
+
+            DataContext = dataContext;
         }
     }
 }

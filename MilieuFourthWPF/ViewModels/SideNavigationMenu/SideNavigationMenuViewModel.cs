@@ -20,9 +20,9 @@ namespace MilieuFourthWPF
         {
             _navigationService = navigationService;
             _model = model;
-            
+            _navigationService.PageChanged += _navigationService_PageChanged;
         }
-
+        
         public ObservableCollection<NavigationItem> NavigationList { get; set; } = new ObservableCollection<NavigationItem>
         {
             new NavigationItem() { Title = "Главная", AppPage = ApplicationWindowPageEnum.Home, Icon = App.Current.Resources["FontAwesomeHome"].ToString() },
@@ -35,10 +35,14 @@ namespace MilieuFourthWPF
         //public ObservableCollection<NavigationItem> NavigationList => _model.NavigationList;
         public NavigationItem SelectedNavigationItem { get; set; }
 
-        public Visibility NavMenuVisibility 
-        { 
-            get => _navigationService.CurrentPage.GetType() != typeof(LoginAndRegViewModel) ? Visibility.Collapsed : Visibility.Visible ;              
+        public Visibility NavMenuVisibility { get; set; }
+
+        #region Event Handlers
+        private void _navigationService_PageChanged(object sender, ApplicationWindowEventArgs e)
+        {
+            NavMenuVisibility = _navigationService.CurrentPage.GetType() == typeof(LoginAndRegViewModel) ? Visibility.Collapsed : Visibility.Visible;
         }
+        #endregion
 
         //private RelayCommand _addNavItem = null;
         //public RelayCommand AddNavItemCommand => _addNavItem ??

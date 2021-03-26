@@ -55,6 +55,7 @@ namespace MilieuFourthWPF
             // ViewModels
             builder.RegisterType<ApplicationWindowViewModel>().SingleInstance();
             builder.RegisterType<SideNavigationMenuViewModel>().SingleInstance();
+            builder.RegisterType<HomeViewModel>().SingleInstance();
 
             // Services
             builder.RegisterType<HttpClient>().SingleInstance();
@@ -64,8 +65,9 @@ namespace MilieuFourthWPF
             builder.RegisterType<ViewModelAbstractFactory>().As<IViewModelAbstractFactory>().SingleInstance();
             builder.RegisterType<LoginAndRegViewModelFactory>().As<IViewModelFactory<LoginAndRegViewModel>>().SingleInstance();
             builder.RegisterType<SideNavigationMenuViewModelFactory>().As<IViewModelFactory<SideNavigationMenuViewModel>>().SingleInstance();
+            builder.RegisterType<HomeViewModelFactory>().As<IViewModelFactory<HomeViewModel>>().SingleInstance();
 
-            
+
             builder.RegisterType<HttpServer>().SingleInstance();
 
             // Repos
