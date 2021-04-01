@@ -16,7 +16,7 @@ namespace MilieuFourthWPF
         {
             InitializeComponent();
 
-            DataContext = new LoginAndRegViewModel();
+            //DataContext = new LoginAndRegViewModel();
         }
 
         public LoginAndRegPage(LoginAndRegViewModel datacontext)
@@ -24,7 +24,7 @@ namespace MilieuFourthWPF
             InitializeComponent();
 
             DataContext = datacontext;
-        }
+        }        
 
         private void MainGrid_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -34,17 +34,17 @@ namespace MilieuFourthWPF
         //Флаг покажет анимируется ли сейчас форма
         private bool isFormInAnimation = false;
 
-        private void MoveToLogRegPageButton(object sender, RoutedEventArgs e)
+        private void MoveToLogRegFormButton(object sender, EventArgs e)
         {
             if (isFormInAnimation)
                 return;
 
-            Border currentBorder;
-            Border nextBorder;
+            FrameworkElement currentBorder;
+            FrameworkElement nextBorder;
 
             float animationDurationInSec = 0.6f;
 
-            if (LoginFormBorder.Visibility == Visibility.Visible)
+            if (RegistrationFormBorder.Visibility != Visibility.Visible)
             {
                 currentBorder = LoginFormBorder;
                 nextBorder = RegistrationFormBorder;
@@ -57,22 +57,23 @@ namespace MilieuFourthWPF
 
             var currentSb = new Storyboard();
             currentSb.AddSlideToLeft(animationDurationInSec, currentBorder.ActualWidth);
-            currentSb.AddFadeOut(animationDurationInSec);            
+            currentSb.AddFadeOut(animationDurationInSec);
             currentSb.Completed += (o, s) => currentBorder.Visibility = Visibility.Hidden;
 
             var nextSb = new Storyboard();
             nextSb.AddSlideFromRight(animationDurationInSec, nextBorder.ActualWidth + 50);
             nextSb.AddFadeIn(animationDurationInSec);
-            nextSb.Completed += (o, s) => isFormInAnimation = false ;
+            nextSb.Completed += (o, s) => isFormInAnimation = false;
             nextBorder.Visibility = Visibility.Visible;
 
             isFormInAnimation = true;
             currentSb.Begin(currentBorder);
             nextSb.Begin(nextBorder);
-            
-        }
-        
 
+        }
+
+        #region Registration methods
+        
         private void PasswordRegistration_Changed(object sender, RoutedEventArgs e)
         {
             if (this.DataContext != null)
@@ -85,10 +86,16 @@ namespace MilieuFourthWPF
             { ((dynamic)this.DataContext).ConfirmPasswordRegistration = ((PasswordBox)sender).SecurePassword; }
         }
 
+        #endregion
+
+        #region Login methods
+
         private void PasswordLogin_Changed(object sender, RoutedEventArgs e)
         {
             if (this.DataContext != null)
             { ((dynamic)this.DataContext).PasswordLogin = ((PasswordBox)sender).SecurePassword; }
         }
+
+        #endregion
     }
 }

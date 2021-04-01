@@ -2,6 +2,7 @@
 using Milieu.ClientModels.SideNavigationMenuModel;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Linq;
 
 namespace MilieuFourthWPF
 {
@@ -10,7 +11,7 @@ namespace MilieuFourthWPF
         public class NavigationItem
         {
             public string Title { get; set; }
-            public ApplicationWindowPageEnum AppPage { get; set; }
+            public ApplicationWindowControlEnum AppPage { get; set; }
             public string Icon { get; set; }
         }
 
@@ -25,11 +26,11 @@ namespace MilieuFourthWPF
         
         public ObservableCollection<NavigationItem> NavigationList { get; set; } = new ObservableCollection<NavigationItem>
         {
-            new NavigationItem() { Title = "Главная", AppPage = ApplicationWindowPageEnum.Home, Icon = App.Current.Resources["FontAwesomeHome"].ToString() },
-            new NavigationItem() { Title = "Карточки", AppPage = ApplicationWindowPageEnum.Cards, Icon = App.Current.Resources["FontAwesomeCards"].ToString() },
-            new NavigationItem() { Title = "Статистика", AppPage = ApplicationWindowPageEnum.Stats, Icon = App.Current.Resources["FontAwesomeStats"].ToString() },
-            new NavigationItem() { Title = "Настройки", AppPage = ApplicationWindowPageEnum.Settings, Icon = App.Current.Resources["FontAwesomeSettings"].ToString() },
-            new NavigationItem() { Title = "Магазин", AppPage = ApplicationWindowPageEnum.Store, Icon = App.Current.Resources["FontAwesomeStore"].ToString() },
+            new NavigationItem() { Title = "Главная", AppPage = ApplicationWindowControlEnum.Home, Icon = App.Current.Resources["FontAwesomeHome"].ToString() },
+            new NavigationItem() { Title = "Карточки", AppPage = ApplicationWindowControlEnum.Cards, Icon = App.Current.Resources["FontAwesomeCards"].ToString() },
+            new NavigationItem() { Title = "Статистика", AppPage = ApplicationWindowControlEnum.Stats, Icon = App.Current.Resources["FontAwesomeStats"].ToString() },
+            new NavigationItem() { Title = "Настройки", AppPage = ApplicationWindowControlEnum.Settings, Icon = App.Current.Resources["FontAwesomeSettings"].ToString() },
+            new NavigationItem() { Title = "Магазин", AppPage = ApplicationWindowControlEnum.Store, Icon = App.Current.Resources["FontAwesomeStore"].ToString() },
         };
 
         //public ObservableCollection<NavigationItem> NavigationList => _model.NavigationList;
@@ -37,10 +38,17 @@ namespace MilieuFourthWPF
 
         public Visibility NavMenuVisibility { get; set; }
 
+        public override ApplicationWindowControlEnum ApplicationWindowControlEnumName => ApplicationWindowControlEnum.SideMenuNavigation;
+
         #region Event Handlers
         private void _navigationService_PageChanged(object sender, ApplicationWindowEventArgs e)
         {
-            NavMenuVisibility = _navigationService.CurrentPage.GetType() == typeof(LoginAndRegViewModel) ? Visibility.Collapsed : Visibility.Visible;
+            
+            NavMenuVisibility = _navigationService.CurrentPageEnum == ApplicationWindowControlEnum.LoginAndRegistration ? Visibility.Collapsed : Visibility.Visible;
+
+            //SelectedNavigationItem = NavigationList.First(item => item.AppPage == (sender as INavigationService).CurrentPageEnum);
+            //SelectedNavigationItem = NavigationList[0];
+            SelectedNavigationItem = NavigationList.FirstOrDefault(item => item.AppPage == (sender as INavigationService).CurrentPageEnum);
         }
         #endregion
 

@@ -1,10 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Milieu.Models.Requests
+﻿namespace Milieu.ClientModels.Web
 {
     public class AuthenticateApiRequest
-    {
-        [Required]
+    {        
         public string Email { get; set; }
 
         public string RefreshToken { get; set; }

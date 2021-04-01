@@ -6,8 +6,8 @@ namespace MilieuFourthWPF
 {
     public class ApplicationWindowEventArgs : EventArgs
     {
-        public readonly ApplicationWindowPageEnum PreviousPage;
-        public ApplicationWindowEventArgs(ApplicationWindowPageEnum prevPage)
+        public readonly ApplicationWindowControlEnum PreviousPage;
+        public ApplicationWindowEventArgs(ApplicationWindowControlEnum prevPage)
         {
             PreviousPage = prevPage;
         }

@@ -1,12 +1,6 @@
-﻿using Milieu.Models.Account.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using Milieu.Models.Responses;
 
-namespace Milieu.Models.Responses
+namespace Milieu.ClientModels.Web
 {
     public class AuthenticateApiResponse
     {
@@ -20,10 +14,10 @@ namespace Milieu.Models.Responses
         {
 
         }
-        public AuthenticateApiResponse(User user, string jwt, string refreshToken)
+        public AuthenticateApiResponse(string email, string jwt, string refreshToken)
         {
             ApiResponseDefault = new DefaultApiResponse();
-            Email = user.Email;
+            Email = email;
             Jwt = jwt;
             RefreshToken = refreshToken;
         }

@@ -2,6 +2,6 @@
 {
     public interface IViewModelAbstractFactory
     {
-        BaseViewModel CreateViewModel(ApplicationWindowPageEnum appPageEnum);
+        BaseViewModel CreateViewModel(ApplicationWindowControlEnum appPageEnum);
     }
 }

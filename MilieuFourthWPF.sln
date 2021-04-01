@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MilieuFourthWPF", "MilieuFo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MilieuStylesLibrary", "MilieuStylesLibrary\MilieuStylesLibrary.csproj", "{D16D1267-222E-4D84-89E7-2C7AC3596BDE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Milieu.Models", "Milieu.Models\Milieu.Models.csproj", "{7B0531FD-9E58-4841-9A67-60390B7A8A6D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Milieu.ClientModels", "Milieu.ClientModel\Milieu.ClientModels.csproj", "{59BEB418-4F84-4645-8089-F53F9321F84E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Milieu.Relational", "Milieu.Relational\Milieu.Relational.csproj", "{2D636BD9-10A2-4C3D-BAAE-EB9CB97C12C2}"
@@ -27,10 +25,6 @@ Global
 		{D16D1267-222E-4D84-89E7-2C7AC3596BDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D16D1267-222E-4D84-89E7-2C7AC3596BDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D16D1267-222E-4D84-89E7-2C7AC3596BDE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7B0531FD-9E58-4841-9A67-60390B7A8A6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7B0531FD-9E58-4841-9A67-60390B7A8A6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7B0531FD-9E58-4841-9A67-60390B7A8A6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7B0531FD-9E58-4841-9A67-60390B7A8A6D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{59BEB418-4F84-4645-8089-F53F9321F84E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{59BEB418-4F84-4645-8089-F53F9321F84E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59BEB418-4F84-4645-8089-F53F9321F84E}.Release|Any CPU.ActiveCfg = Release|Any CPU

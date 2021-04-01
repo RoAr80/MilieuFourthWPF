@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Milieu.Models.Account.Requests
+namespace Milieu.ClientModels.Web
 {
     public class RegisterApiRequest
     {

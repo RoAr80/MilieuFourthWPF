@@ -9,10 +9,12 @@ namespace MilieuFourthWPF
 {
     public interface INavigationService : INotifyPropertyChanged
     {
-        BaseViewModel CurrentPage { get; set; }
+        BaseViewModel CurrentPage { get; }
+        ApplicationWindowControlEnum CurrentPageEnum { get; set; }
         long UserSessionLocalId { get; set; }
-        void NavigateTo(ApplicationWindowPageEnum appPageEnum);
-        void NavigateTo(ApplicationWindowPageEnum appPageEnum, object payload);
+        void NavigateTo(ApplicationWindowControlEnum appPageEnum);
+        void NavigateTo(ApplicationWindowControlEnum appPageEnum, object payload);
+
         event EventHandler<ApplicationWindowEventArgs> PageChanged;
     }
 }

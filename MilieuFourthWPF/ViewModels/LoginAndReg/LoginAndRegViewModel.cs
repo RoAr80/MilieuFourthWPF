@@ -1,7 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Milieu.Models.Account.Requests;
-using Milieu.Models.Responses;
-using MilieuFourthWPF.Helpers;
+using Milieu.ClientModels.Registration;
 using Newtonsoft.Json;
 using System.Security;
 using System.Threading.Tasks;
@@ -11,31 +9,70 @@ namespace MilieuFourthWPF
     // Не нравится что VM отвечает за две функции
     public class LoginAndRegViewModel : BaseViewModel
     {
+        public override ApplicationWindowControlEnum ApplicationWindowControlEnumName => ApplicationWindowControlEnum.LoginAndRegistration;
+
 
         #region Constructor
 
-        public LoginAndRegViewModel()
-        {            
+        public LoginAndRegViewModel(RegistrationModel registrationModel)
+        {
+            _registrationModel = registrationModel;
         }
 
-        public LoginAndRegViewModel(INavigationService navigationService)
+
+        #endregion
+
+        #region Registration
+        #region Private Fields        
+
+        RegistrationModel _registrationModel;
+
+        #endregion
+
+        #region Public Properties
+
+        public string EmailRegistration 
+        { 
+            get => _registrationModel.Email; 
+            set => _registrationModel.Email = value; 
+        }
+        public SecureString PasswordRegistration 
+        { 
+            get => _registrationModel.Password; 
+            set => _registrationModel.Password = value; 
+        }
+        public SecureString ConfirmPasswordRegistration
         {
-            _navigationService = navigationService;
+            get => _registrationModel.ConfirmPassword;
+            set => _registrationModel.ConfirmPassword = value;
         }
 
         #endregion
 
-        #region Private Fields        
+        #region Commands
+
+        private IAsyncCommand _registerCommand = null;
+        public IAsyncCommand RegisterCommand => _registerCommand ??
+            (_registerCommand = new AsyncCommand(_registerMethodAsync));
+
+        private async Task _registerMethodAsync()
+        {
+            bool isSuccess = await _registrationModel.RegisterAsync();
+
+            if(isSuccess == true)
+            {
+                _navigationService.NavigateTo(ApplicationWindowControlEnum.Home);
+            }
+
+        }
+
+        #endregion
 
         #endregion
 
         #region Public Properties
         public string EmailLogin { get; set; }
-        public SecureString PasswordLogin { private get; set; }
-
-        public string EmailRegistration { get; set; }
-        public SecureString PasswordRegistration { private get; set; }
-        public SecureString ConfirmPasswordRegistration { private get; set; }
+        public SecureString PasswordLogin { private get; set; }        
 
         #endregion
 
@@ -70,36 +107,10 @@ namespace MilieuFourthWPF
             //    // Добавить в чём ошибка
             //}
 
-            _navigationService.NavigateTo(ApplicationWindowPageEnum.Home);
+            _navigationService.NavigateTo(ApplicationWindowControlEnum.Home);
         }
 
-        private IAsyncCommand _registerCommand = null;
-        public IAsyncCommand RegisterCommand => _registerCommand ??
-            (_registerCommand = new AsyncCommand(_registerMethodAsync));
-
-        private async Task _registerMethodAsync()
-        {
-            string urlRegister = ApiRouteHelper.GetAccountControllerRegisterRoute();
-
-            var response = await WebRequests.PostJsonAsync
-                (urlRegister,
-                new RegisterApiRequest
-                {
-                    Email = EmailRegistration,
-                    Password = PasswordRegistration.Unsecure(),
-                    ConfirmPassword = ConfirmPasswordRegistration.Unsecure()
-                });
-
-            AuthenticateApiResponse result = JsonConvert.DeserializeObject<AuthenticateApiResponse>(response.Content.ReadAsStringAsync().Result);
-
-            if (result.ApiResponseDefault.Successful)
-            {                                           
-                // ToDo: Переписать на NavigationService
-                //ApplicationWindowViewModel appVM = DI.ServiceProvider.GetService<ApplicationWindowViewModel>();
-                //await appVM.EntryToAppAsync(result.Email, result.Jwt, result.RefreshToken);
-            }
-
-        }
+        
 
         
         #endregion

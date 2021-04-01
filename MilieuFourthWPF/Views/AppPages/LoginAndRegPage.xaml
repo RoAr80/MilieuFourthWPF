@@ -18,7 +18,7 @@
                     TextBlock.TextAlignment="Center"
                     Orientation="Horizontal" Height="400">
 
-            <Image Source="../Resources/human.png"/>
+            <Image Source="../../Resources/human.png"/>
             <Grid Width="330" 
                   Margin="75 0">
                 <Border Name="LoginFormBorder"
@@ -28,7 +28,7 @@
                         Visibility="Visible"
                         Panel.ZIndex="2"
                         >
-                    
+
                     <StackPanel Margin="15">
                         <TextBlock Style="{StaticResource LogoText}"/>
 
@@ -56,8 +56,9 @@
                             <Button Style="{StaticResource MoveToRegisterFormButton}"
                                     Content="Зарегистрироваться"
                                     TabIndex="3"
-                                    Click="MoveToLogRegPageButton"
-                                    Command="{Binding slideForm}"/>
+                                    Click="MoveToLogRegFormButton"
+                                    />
+                            <!--Click="MoveToLogRegPageButton"-->
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -78,19 +79,19 @@
                         <PasswordBox Style="{StaticResource LoginPasswordBoxStyle}"
                                      PasswordChanged="PasswordRegistration_Changed"                                     
                                      TabIndex="1"/>
-                        
+
                         <PasswordBox Style="{StaticResource LoginPasswordBoxStyle}"
                                      PasswordChanged="ConfirmPasswordRegistration_Changed"
                                      msl:PlaceholderProperty.Value="Confirm Password"
                                      TabIndex="1"/>
-                                                
+
 
                         <Button Style="{StaticResource SignInOrUpButton}"
                                 IsDefault="True"
                                 Margin="0 40 0 0" Content="Регистрация"
                                 Command="{Binding RegisterCommand}"
                                 TabIndex="2"/>
-                        
+
 
                         <StackPanel Orientation="Horizontal" 
                                     HorizontalAlignment="Center" 
@@ -99,14 +100,14 @@
                             <Button Style="{StaticResource MoveToRegisterFormButton}"
                                     Content="Войти"
                                     TabIndex="3"
-                                    Click="MoveToLogRegPageButton"
+                                    Click="MoveToLogRegFormButton"
                                     />
                         </StackPanel>
                     </StackPanel>
                 </Border>
             </Grid>
 
-            <Image Source="../Resources/robot.png"/>
+            <Image Source="../../Resources/robot.png"/>
 
         </StackPanel>
 

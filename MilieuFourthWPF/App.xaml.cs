@@ -26,61 +26,42 @@ namespace MilieuFourthWPF
     public partial class App : Application
     {        
         public IConfiguration Configuration { get; private set; }
-        private IContainer container;
+        private IContainer _container;
 
         private readonly IHost _host;
 
         public App()
-        {            
-            var builder = new ContainerBuilder();
+        {
+            Configuration = CreateConfiguration().Build();
+            _container = CreateContainerBuilder().Build();
+        }
 
-            // Add DbContext
-            builder.Register(c =>
-            {
-                var opt = new DbContextOptionsBuilder<ClientDbContext>();
-                opt.UseSqlite("Data Source=MilieuClientData.db");
+        public IConfigurationBuilder CreateConfiguration()
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
 
-                return new ClientDbContext(opt.Options);
-            }).AsSelf();
+            return builder;
+        }
 
-
-            // Models
-            builder.RegisterType<SideNavigationMenuModel>().InstancePerLifetimeScope();
-            
-
-            // Views
-            builder.RegisterType<MainWindow>().SingleInstance();
-            builder.RegisterType<SideNavigationMenuControl>().SingleInstance();
-
-            // ViewModels
-            builder.RegisterType<ApplicationWindowViewModel>().SingleInstance();
-            builder.RegisterType<SideNavigationMenuViewModel>().SingleInstance();
-            builder.RegisterType<HomeViewModel>().SingleInstance();
-
-            // Services
-            builder.RegisterType<HttpClient>().SingleInstance();
-            builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
-
-            // ViewModels Factories
-            builder.RegisterType<ViewModelAbstractFactory>().As<IViewModelAbstractFactory>().SingleInstance();
-            builder.RegisterType<LoginAndRegViewModelFactory>().As<IViewModelFactory<LoginAndRegViewModel>>().SingleInstance();
-            builder.RegisterType<SideNavigationMenuViewModelFactory>().As<IViewModelFactory<SideNavigationMenuViewModel>>().SingleInstance();
-            builder.RegisterType<HomeViewModelFactory>().As<IViewModelFactory<HomeViewModel>>().SingleInstance();
-
-
-            builder.RegisterType<HttpServer>().SingleInstance();
-
-            // Repos
-            builder.RegisterType<ClientRepository>().As<IClientRepo>().InstancePerLifetimeScope();
-
-            container = builder.Build();
-            
+        public ContainerBuilder CreateContainerBuilder()
+        {
+            return new ContainerBuilder()
+                .AddLocalDbContext(Configuration)
+                .AddModels()
+                .AddViews()
+                .AddViewModels()
+                .AddViewModelsFactories()
+                .AddServices()
+                .AddHttpLocalServer()
+                .AddRepos();
         }
         
         //ToDo: Плохо конечно, но что поделаешь
         private async void OnStartup(object sender, StartupEventArgs e)
         {            
-            MainWindow mainWindow = container.Resolve<MainWindow>();
+            MainWindow mainWindow = _container.Resolve<MainWindow>();
             mainWindow.Show();
 
             //var appVM = DI.ServiceProvider.GetService<ApplicationWindowViewModel>();

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Milieu.Models.Routes
+namespace Milieu.ClientModels.ApiRouteHelpers
 {
     public static class ApiRoutes
     {
@@ -20,7 +20,7 @@ namespace Milieu.Models.Routes
 
         public const string AmIAuthorized = "amiauthorized";
 
-        public const string AccountControllerAmIAuthorized = AccountController + "/" + AmIAuthorized; 
+        public const string AccountControllerAmIAuthorized = AccountController + "/" + AmIAuthorized;
 
         public const string GetJwtAndRtViaRt = "getjwtandrtviart";
 

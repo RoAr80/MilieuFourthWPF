@@ -1,11 +1,10 @@
-﻿using Milieu.Models.Routes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MilieuFourthWPF.Helpers
+namespace Milieu.ClientModels.ApiRouteHelpers
 {
     public static class ApiRouteHelper
     {

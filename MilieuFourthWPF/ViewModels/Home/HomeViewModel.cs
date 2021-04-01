@@ -8,6 +8,6 @@ namespace MilieuFourthWPF
 {
     public class HomeViewModel : BaseViewModel
     {
-        
+        public override ApplicationWindowControlEnum ApplicationWindowControlEnumName => ApplicationWindowControlEnum.Home;
     }
 }

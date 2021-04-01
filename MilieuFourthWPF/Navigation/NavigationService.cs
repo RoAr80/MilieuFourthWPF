@@ -12,17 +12,18 @@ namespace MilieuFourthWPF
     public class NavigationService : INavigationService
     {
         //public BaseViewModel currentPage;
-        public BaseViewModel CurrentPage { get; set; }
+        public BaseViewModel CurrentPage { get; private set; }
+        public ApplicationWindowControlEnum CurrentPageEnum { get; set; }
         public long UserSessionLocalId { get; set; }
         IViewModelAbstractFactory _viewModelAbstractFactory;
         public NavigationService(IViewModelAbstractFactory viewModelAbstractFactory)
         {
             _viewModelAbstractFactory = viewModelAbstractFactory;            
-            CurrentPage = _viewModelAbstractFactory.CreateViewModel(ApplicationWindowPageEnum.LoginAndRegPage);
+            //CurrentPage = _viewModelAbstractFactory.CreateViewModel(ApplicationWindowPageEnum.LoginAndRegPage);
             //NavigateTo(ApplicationWindowPageEnum.LoginAndRegPage);
         }
 
-        public void NavigateTo(ApplicationWindowPageEnum appPageEnum)
+        public void NavigateTo(ApplicationWindowControlEnum appPageEnum)
         {
             var vm = _viewModelAbstractFactory.CreateViewModel(appPageEnum);
 
@@ -30,12 +31,14 @@ namespace MilieuFourthWPF
             vm._navigationService = this;
             //Dispatcher.CurrentDispatcher.Invoke(() => CurrentPage = vm);
             CurrentPage = vm;
+            ApplicationWindowControlEnum prevPage = CurrentPageEnum;
+            CurrentPageEnum = appPageEnum;
             // ToDo: исправить второй аргумент
-            PageChanged?.Invoke(this, new ApplicationWindowEventArgs(ApplicationWindowPageEnum.LoginAndRegPage));
+            PageChanged?.Invoke(this, new ApplicationWindowEventArgs(prevPage));
 
         }
 
-        public void NavigateTo(ApplicationWindowPageEnum appPageEnum, object payload)
+        public void NavigateTo(ApplicationWindowControlEnum appPageEnum, object payload)
         {
             throw new NotImplementedException();
         }

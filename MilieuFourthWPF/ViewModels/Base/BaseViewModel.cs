@@ -9,8 +9,10 @@ using System.Threading.Tasks;
 
 namespace MilieuFourthWPF
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public abstract class BaseViewModel : INotifyPropertyChanged
     {
+        public abstract ApplicationWindowControlEnum ApplicationWindowControlEnumName { get; }
+
         public INavigationService _navigationService { get; set; }
 
         #region INotifyPropertyChanged Implementation
