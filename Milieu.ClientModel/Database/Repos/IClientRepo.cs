@@ -9,7 +9,6 @@ namespace Milieu.ClientModels.Database.Repos
 {
     public interface IClientRepo
     {
-        Task RegisterUserAsync(LoginCredentialsDataModel LoginCred);
         Task UpdateTokensAsync(LoginCredentialsDataModel LoginCred, string Jwt, string RefreshToken);
         Task UpdateUserWhenLogin(long userIdWhichUpdate, string Jwt, string RefreshToken);
         Task UpdateEmailAndTokenAsync(LoginCredentialsDataModel LoginCred);

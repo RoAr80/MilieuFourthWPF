@@ -9,7 +9,7 @@ namespace Milieu.ClientModels.Web
             object content = null,
             string bearerToken = null);
 
-        Task<HttpResponseMessage> GetAsyncJson(string url,
+        Task<HttpResponseMessage> GetJsonAsync(string url,
             string bearerToken = null);
     }
 }

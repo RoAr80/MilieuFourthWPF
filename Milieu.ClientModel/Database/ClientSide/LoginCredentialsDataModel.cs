@@ -11,6 +11,7 @@ namespace Milieu.ClientModels.ClientSide
     public class LoginCredentialsDataModel
     {
         public long Id { get; set; }        
+        // Может написать required
         public string Email { get; set; }
         public string Jwt { get; set; }
         public string RefreshToken { get; set; }

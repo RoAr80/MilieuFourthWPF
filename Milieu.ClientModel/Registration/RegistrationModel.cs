@@ -2,11 +2,7 @@
 using Milieu.ClientModels.ExtensionMethods;
 using Milieu.ClientModels.Web;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Milieu.ClientModels.Registration
@@ -22,28 +18,28 @@ namespace Milieu.ClientModels.Registration
         public SecureString Password { get; set; }
         public SecureString ConfirmPassword { get; set; }
 
-        public async Task<bool> RegisterAsync(string email, SecureString password, SecureString confirmPassword)
-        {
-            string urlRegister = ApiRouteHelper.GetAccountControllerRegisterRoute();
+        //public async Task<bool> RegisterAsync(string email, SecureString password, SecureString confirmPassword)
+        //{
+        //    string urlRegister = ApiRouteHelper.GetAccountControllerRegisterRoute();
 
-            var response = await _webRequestsService.PostJsonAsync
-                (urlRegister,
-                new RegisterApiRequest
-                {
-                    Email = email,
-                    Password = password.Unsecure(),
-                    ConfirmPassword = confirmPassword.Unsecure()
-                });
+        //    var response = await _webRequestsService.PostJsonAsync
+        //        (urlRegister,
+        //        new RegisterApiRequest
+        //        {
+        //            Email = email,
+        //            Password = password.Unsecure(),
+        //            ConfirmPassword = confirmPassword.Unsecure()
+        //        });
 
-            AuthenticateApiResponse result = JsonConvert.DeserializeObject<AuthenticateApiResponse>(response.Content.ReadAsStringAsync().Result);
+        //    AuthenticateApiResponse result = JsonConvert.DeserializeObject<AuthenticateApiResponse>(response.Content.ReadAsStringAsync().Result);
 
-            if (result.ApiResponseDefault.Successful)
-            {                
-                return true;
-            }
-            else
-                return false;
-        }
+        //    if (result.ApiResponseDefault.Successful)
+        //    {                
+        //        return true;
+        //    }
+        //    else
+        //        return false;
+        //}
 
         public async Task<bool> RegisterAsync()
         {

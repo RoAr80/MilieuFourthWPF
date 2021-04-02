@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Milieu.ClientModels.Login;
 using Milieu.ClientModels.Registration;
 using Newtonsoft.Json;
 using System.Security;
@@ -14,15 +15,16 @@ namespace MilieuFourthWPF
 
         #region Constructor
 
-        public LoginAndRegViewModel(RegistrationModel registrationModel)
+        public LoginAndRegViewModel(RegistrationModel registrationModel, LoginModel loginModel)
         {
             _registrationModel = registrationModel;
+            _loginModel = loginModel;
         }
-
 
         #endregion
 
         #region Registration
+
         #region Private Fields        
 
         RegistrationModel _registrationModel;
@@ -53,14 +55,15 @@ namespace MilieuFourthWPF
 
         private IAsyncCommand _registerCommand = null;
         public IAsyncCommand RegisterCommand => _registerCommand ??
-            (_registerCommand = new AsyncCommand(_registerMethodAsync));
+            (_registerCommand = new AsyncCommand(_registerMethodAndEntryAsync));
 
-        private async Task _registerMethodAsync()
+        private async Task _registerMethodAndEntryAsync()
         {
             bool isSuccess = await _registrationModel.RegisterAsync();
 
             if(isSuccess == true)
             {
+                await _loginModel.LoginToAppOnServerAsync(EmailRegistration, PasswordRegistration);
                 _navigationService.NavigateTo(ApplicationWindowControlEnum.Home);
             }
 
@@ -70,9 +73,17 @@ namespace MilieuFourthWPF
 
         #endregion
 
+        #region Login
+
+        #region Private Fields
+
+        LoginModel _loginModel;
+
+        #endregion
+
         #region Public Properties
         public string EmailLogin { get; set; }
-        public SecureString PasswordLogin { private get; set; }        
+        public SecureString PasswordLogin { private get; set; }
 
         #endregion
 
@@ -84,36 +95,17 @@ namespace MilieuFourthWPF
 
         private async Task _loginMethodAsync()
         {
-            //string urlLogin = ApiRouteHelper.GetAccountControllerLoginRoute();
-
-            //var response = await WebRequests.PostJsonAsync
-            //(
-            //    urlLogin,
-            //    new LoginApiRequest
-            //    {
-            //        Email = EmailLogin,
-            //        Password = PasswordLogin.Unsecure()
-            //    });
-
-            //if (response.IsSuccessStatusCode)
-            //{
-            //    AuthenticateApiResponse result = JsonConvert.DeserializeObject<AuthenticateApiResponse>(response.Content.ReadAsStringAsync().Result);                
-            //    // ToDo: сделать с NavigationService
-            //    //var appVM = DI.ServiceProvider.GetService<ApplicationWindowViewModel>();
-            //    //await appVM.EntryToAppAsync(result.Email, result.Jwt, result.RefreshToken);                                
-            //}
-            //else
-            //{
-            //    // Добавить в чём ошибка
-            //}
-
+            await _loginModel.LoginToAppOnServerAsync(EmailLogin, PasswordLogin);
             _navigationService.NavigateTo(ApplicationWindowControlEnum.Home);
         }
 
-        
-
-        
         #endregion
+
+        #endregion
+
+
+
+
 
 
     }

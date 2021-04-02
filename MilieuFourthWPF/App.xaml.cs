@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Milieu.ClientModels.ClientSide.SideNavigationMenuModel;
 using Milieu.ClientModels.Database.Repos;
+using Milieu.ClientModels.Login;
 using Milieu.Relational.Database;
 using Milieu.Relational.Database.Repos;
 using System;
@@ -60,12 +61,21 @@ namespace MilieuFourthWPF
         
         //ToDo: Плохо конечно, но что поделаешь
         private async void OnStartup(object sender, StartupEventArgs e)
-        {            
+        {
+            INavigationService navigationService = _container.Resolve<INavigationService>();
             MainWindow mainWindow = _container.Resolve<MainWindow>();
             mainWindow.Show();
+            LoginModel loginModel = _container.Resolve<LoginModel>();
+            var Successful = await loginModel.TryToAutoLoginAsync();
+            if (Successful)
+            {
+                navigationService.NavigateTo(ApplicationWindowControlEnum.Home);
+            }
+            else
+            {
+                navigationService.NavigateTo(ApplicationWindowControlEnum.LoginAndRegistration);
+            }
 
-            //var appVM = DI.ServiceProvider.GetService<ApplicationWindowViewModel>();
-            //await appVM.TryToAutoLoginAsync();
 
         }        
     }

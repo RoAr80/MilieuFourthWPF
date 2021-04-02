@@ -21,7 +21,7 @@ namespace MilieuFourthWPF
                 case HomeViewModel c:
                     return new HomePage(c);
                 default:
-                    Debugger.Break();
+                    //Debugger.Break();
                     return null;
             }
         }

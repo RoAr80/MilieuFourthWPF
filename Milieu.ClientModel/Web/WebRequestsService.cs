@@ -39,7 +39,7 @@ namespace Milieu.ClientModels.Web
         }
 
 
-        public async Task<HttpResponseMessage> GetAsyncJson(
+        public async Task<HttpResponseMessage> GetJsonAsync(
             string url,            
             string bearerToken = null)
         {

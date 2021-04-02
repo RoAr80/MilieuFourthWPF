@@ -20,21 +20,7 @@ namespace Milieu.Relational.Database.Repos
         {            
             await _clientDbContext.LoginCredentials.AddAsync(LoginCred);
             _clientDbContext.SaveChanges();
-        }
-
-        public async Task RegisterUserAsync(LoginCredentialsDataModel LoginCred)
-        {
-            LoginCredentialsDataModel loginCred = new LoginCredentialsDataModel 
-            { 
-                Email = LoginCred.Email,
-                Jwt = LoginCred.Jwt,
-                RefreshToken = LoginCred.RefreshToken,
-                LastEntry = DateTime.Now,
-                IsLogout = false,
-            };
-            await _clientDbContext.LoginCredentials.AddAsync(loginCred);
-            _clientDbContext.SaveChanges();
-        }
+        }       
 
         // ToDo: Подумать ещё раз        
         public async Task UpdateTokensAsync(LoginCredentialsDataModel LoginCred, string Jwt, string RefreshToken)
@@ -102,6 +88,7 @@ namespace Milieu.Relational.Database.Repos
 
         public async Task<LoginCredentialsDataModel> GetLastEntryUserAsync()
         {
+            //var check = _clientDbContext.LoginCredentials.OrderByDescending(f => f.LastEntry).FirstOrDefault();
             return await Task.Run(() => _clientDbContext.LoginCredentials.OrderByDescending(f => f.LastEntry).FirstOrDefault());            
         }
 
