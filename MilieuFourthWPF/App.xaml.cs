@@ -60,23 +60,10 @@ namespace MilieuFourthWPF
         }
         
         //ToDo: Плохо конечно, но что поделаешь
-        private async void OnStartup(object sender, StartupEventArgs e)
+        private void OnStartup(object sender, StartupEventArgs e)
         {
-            INavigationService navigationService = _container.Resolve<INavigationService>();
             MainWindow mainWindow = _container.Resolve<MainWindow>();
-            mainWindow.Show();
-            LoginModel loginModel = _container.Resolve<LoginModel>();
-            var Successful = await loginModel.TryToAutoLoginAsync();
-            if (Successful)
-            {
-                navigationService.NavigateTo(ApplicationWindowControlEnum.Home);
-            }
-            else
-            {
-                navigationService.NavigateTo(ApplicationWindowControlEnum.LoginAndRegistration);
-            }
-
-
+            mainWindow.Show();            
         }        
     }
 }

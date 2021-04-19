@@ -21,22 +21,26 @@ namespace MilieuFourthWPF
         {            
             _navigationService = navigationService;
             _applicationModel = applicationModel;
-            _loginModel = loginModel;            
+            _loginModel = loginModel;
+            init();
         }        
 
         #region Methods
 
         private async Task init()
         {
+
             //bool Successful = await _loginModel.TryToAutoLoginAsync();
-            //if (Successful)
-            //{
-            //    _navigationService.NavigateTo(ApplicationWindowControlEnum.Home);
-            //}
-            //else
-            //{
-            //    _navigationService.NavigateTo(ApplicationWindowControlEnum.LoginAndRegistration);
-            //}
+            // Заглушка
+            bool Successful = true;
+            if (Successful)
+            {
+                _navigationService.NavigateTo(ApplicationWindowControlEnum.Home);
+            }
+            else
+            {
+                _navigationService.NavigateTo(ApplicationWindowControlEnum.LoginAndRegistration);
+            }
         }
 
         

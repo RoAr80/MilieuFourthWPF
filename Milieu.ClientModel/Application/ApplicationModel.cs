@@ -1,6 +1,7 @@
 ﻿using Milieu.ClientModels.ApiRouteHelpers;
 using Milieu.ClientModels.ClientSide;
 using Milieu.ClientModels.Database.Repos;
+using Milieu.ClientModels.Login;
 using Milieu.ClientModels.Web;
 using Newtonsoft.Json;
 using System;
@@ -18,7 +19,7 @@ namespace Milieu.ClientModels
         {
             _clientRepo = clientRepo;
             _webRequestsService = webRequestsService;
-            
-        }                
+        }   
+                
     }
 }
